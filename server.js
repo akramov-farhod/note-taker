@@ -1,6 +1,6 @@
 const express = require("express");
 const path = require("path");
-const api = require("./public/js/index");
+const api = require("./routes");
 
 const PORT = process.env.PORT || 3001;
 
@@ -9,9 +9,9 @@ const app = express();
 // Middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api", api);
 
 app.use(express.static("public"));
+app.use("/api", api);
 
 // GET ROUTE // --> LANDING PAGE
 app.get("/", (req, res) =>
@@ -19,13 +19,13 @@ app.get("/", (req, res) =>
 );
 
 // GET ROUTE // --> NOTES PAGE
-app.get("/public/notes", (req, res) =>
+app.get("/notes", (req, res) =>
   res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
 // 404 PAGE //
 app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "public/pages/404.html"))
+  res.sendFile(path.join(__dirname, "/public/404.html"))
 );
 
 app.listen(PORT, () =>
