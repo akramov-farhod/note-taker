@@ -44,7 +44,7 @@ NOtaker was built having simplicity and accessibility in mind as it's core value
 
 <details>
 
-![Application Screenshot](screenshot4readme.png)
+![Application Screenshot](./public/assets/images/screenshot4readme.png)
 
 </details>
 
