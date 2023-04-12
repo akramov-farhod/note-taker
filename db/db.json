@@ -1,17 +1,12 @@
 [
-  {
-    "title": "Test Title 1",
-    "text": "Test text 1",
-    "id": 1
-  },
-  {
-    "title": "Test Title 2",
-    "text": "Test text 2",
-    "id": 2
-  },
-  {
-    "title": "Test Title 3",
-    "text": "Test text 3",
-    "id": 3
-  }
+    {
+        "title": "Note Title",
+        "text": "Note Contents",
+        "id": "40c62267-dc6f-4d3e-b86d-6fc4017432b5"
+    },
+    {
+        "title": "This was ROUGH",
+        "text": "Despite the fact that we are almost done with the semester, this assignment killed so much of my time it's insane. I've learned lots of things tho :P",
+        "id": "1655b9c9-5581-42dc-8c51-a4e19a773d1a"
+    }
 ]

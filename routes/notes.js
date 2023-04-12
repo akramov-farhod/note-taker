@@ -1,31 +1,41 @@
-const notesRouter = require("express").Router();
-const { v4: uuidv4 } = require("uuid");
-const inFileDB = require("../db/db.json");
+const notes = require("express").Router();
 const {
   readFromFile,
   readAndAppend,
   readAndDelete,
 } = require("../helpers/fsUtils");
+const { v4: uuidv4 } = require("uuid");
 
-notesRouter.get("/", (req, res) => {
+notes.get("/", (req, res) => {
   readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
 });
 
-notesRouter.post("/notes", (req, res) => {
-  let { title, text } = req.body;
+notes.post("/", (req, res) => {
+  const { title, text } = req.body;
   if (req.body) {
-    let newNote = {
+    const newNote = {
       title,
       text,
       id: uuidv4(),
     };
 
     readAndAppend(newNote, "./db/db.json");
-    res.json(`Note has been successfully Saved!`);
+    res.json(`Note has been successfully SAVED!`);
   } else {
-    res.errored(
+    res.error(
       "Oopsies, something didn't go according to plan, please try again"
     );
+  }
+});
+
+notes.delete("/:id", (req, res) => {
+  if (req.params.id) {
+    const noteID = req.params.id;
+    readAndDelete(noteID, "./db/db.json");
+    res.json(`Note has been DELETED`);
+    return;
+  } else {
+    res.error("Immortal objects can't be deleted");
   }
 });
 
